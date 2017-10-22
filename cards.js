@@ -3,10 +3,10 @@ var french = require('./frenchCards.js');
 var italian = require('./italianCards.js');
 var hawaiian = require('./hawaiianCards.js');
 
-console.log("Ready!");
+console.log("Card Constructor is ready!");
 
 // this is the card constructor
-function buildCard(deck, side, i) {
+var buildCard = function(deck, side, i) {
 	console.log("Here is card # " + i);
 	this.front = deck[i].front;
 	this.back = deck[i].back;
@@ -17,4 +17,7 @@ function buildCard(deck, side, i) {
 	}
 };
 
-buildCard(italian, "back", 0);
+buildCard(hawaiian, "back", 1);
+
+
+module.exports = buildCard;
