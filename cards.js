@@ -50,7 +50,7 @@ var query = function(side1, side2){
 			if (correct < 10) {
 				getCard(deckChoice);
 			} else if (correct >= 10) {
-				console.log("Great job! Be sure to keep practing!")
+				console.log("Great job! Be sure to keep practing! Total correct: " + correct);
 				start();
 			}
 
