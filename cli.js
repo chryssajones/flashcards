@@ -1,11 +1,17 @@
 var inquirer = require("inquirer");
-var fs = require('fs');
-var buildCard = require('./cards.js');
+var getCard = require('./cards.js');
+var correct = require('./cards.js');
+var incorrect = require('./cards.js');
 
-console.log("Welcome to the flashcard practice app.");
 var deckList = ["French", "Italian", "Hawaiian", "Spanish"];
+var deckChoice = "";
 
 var start = function() {
+	console.log("Welcome to the flashcard practice app.");
+	chooseDeck();
+};
+
+var chooseDeck = function() {
 	inquirer.prompt([
       {
         name: "choice",
@@ -15,21 +21,13 @@ var start = function() {
       }
     ]).then(function(answer) {
     	console.log("You are using the " + answer.choice + " deck. Good luck!")
-    	switch(answer.choice) {
-   			case 0: "French";
-	        	// call french deck
-	        	break;
-		    case 1: "Italian";
-		        // call italian deck
-		        break;
-		    case 2: "Hawaiian";
-		        // call hawaiian deck
-		        break;
-		    case 3: "Spanish";
-		       // call spanish deck
-		        break;		        		        
-		}
-	});
+    	var string = answer.choice;
+    	deckChoice = string.toLowerCase();
+    	console.log(deckChoice);
+    	getCard(deckChoice);
+		});
 };
+    	
 
 start();
+module.exports = deckChoice;
