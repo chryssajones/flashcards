@@ -1,11 +1,10 @@
-# flashcards
+# Flashcards
 A command-line flashcard application using Node.js
 
 Download and type "npm install" in your command-line console.
 To start the app, run node cards.js
 
-Screenshots:
----------------------------------------------------------
+##Screenshots:
 
 When the app starts, the app asks you to select a language deck.
 
