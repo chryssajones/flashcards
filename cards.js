@@ -17,8 +17,8 @@ var incorrect = 0;
 
 // this function starts the game
 var start = function() {
-	console.log("Welcome to the flashcard practice app.");
-	console.log("===========================================");
+	console.log("\n \n Welcome to the flashcard practice app.");
+	console.log("===========================================\n");
 	chooseDeck();
 };
 
@@ -72,7 +72,7 @@ var getCard = function(deck) {
 			side2 = deck[round].front;
 		}
 
-	console.log("Ready? Here's card #" + round);
+	console.log("\n Ready? Here's card #" + round);
 
 	inquirer.prompt([
     	{
@@ -88,28 +88,28 @@ var getCard = function(deck) {
 	    	if (userGuess === side2) {
 				correct ++;
 	    		console.log("That is correct! Great job!");
-	    		console.log("Your new score is >>> Correct: " + correct + ", Incorrect: " + incorrect);
+	    		console.log("\n Your new score is >>> Correct: " + correct + ", Incorrect: " + incorrect);
 	    		console.log("=============================================");
 
 				if (correct < 10) {
 					round ++;
 					getCard(deck);
 				} else if (correct >= 10) {
-					console.log("Great job! Be sure to keep practing!");
+					console.log("\n Great job! Be sure to keep practing!");
 					return;
 				}
 
 			} else {
 				incorrect ++;				
 				console.log("Sorry, that is incorrect. The correct answer is " + side2);
-				console.log("Your new score is >>> Correct: " + correct + ", Incorrect: " + incorrect);
+				console.log("\n Your new score is >>> Correct: " + correct + ", Incorrect: " + incorrect);
 	    		console.log("=============================================");
 
 				if (incorrect < 3) {
 					round ++;
 					getCard(deck);
 				} else if (incorrect >= 3) {
-					console.log("Perhaps you should study a bit more and try again later.");
+					console.log("\n Perhaps you should study a bit more and try again later.");
 					return;
 				}
 
