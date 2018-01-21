@@ -1,25 +1,25 @@
 var hawaiian = [
 	{
-		front: "boy",
+		front: "the boy",
 		back: "ke keikikane"
 	}, {
-		front: "girl",
+		front: "the girl",
 		back: "ke kaikamahine"
 	}, {
-		front: "man",
+		front: "the man",
 		back: "ke kane"
 	},{
-		front: "woman",
+		front: "the woman",
 		back: "ka wahine"
 	}, {
-		front: "family",
+		front: "the family",
 		back: "ka ohana"
 	}, {
-		front: "house",
+		front: "the house",
 		back: "ka hale"
 	}, {
-		front: "food",
-		back: "ka mea 'ai"
+		front: "the food",
+		back: "ka mea'ai"
 	}, {
 		front: "hello",
 		back: "aloha"

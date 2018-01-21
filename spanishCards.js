@@ -1,24 +1,24 @@
 var spanish = [
 	{
-		front: "boy",
+		front: "the boy",
 		back: "el chico"
 	}, {
-		front: "girl",
+		front: "the girl",
 		back: "la chica"
 	}, {
-		front: "man",
+		front: "the man",
 		back: "el hombre"
 	},{
-		front: "woman",
+		front: "the woman",
 		back: "la mujer"
 	}, {
-		front: "family",
+		front: "the family",
 		back: "la familia"
 	}, {
-		front: "house",
+		front: "the house",
 		back: "la casa"
 	}, {
-		front: "food",
+		front: "the food",
 		back: "la comida"
 	}, {
 		front: "hello",

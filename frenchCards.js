@@ -1,24 +1,24 @@
 var french = [
 	{
-		front: "boy",
+		front: "the boy",
 		back: "le garcon"
 	}, {
-		front: "girl",
+		front: "the girl",
 		back: "la fille"
 	}, {
-		front: "man",
+		front: "the man",
 		back: "l'homme"
 	},{
-		front: "woman",
+		front: "the woman",
 		back: "la femme"
 	}, {
-		front: "family",
+		front: "the family",
 		back: "la famille"
 	}, {
-		front: "house",
+		front: "the house",
 		back: "la maison"
 	}, {
-		front: "food",
+		front: "the food",
 		back: "la nourriture"
 	}, {
 		front: "hello",

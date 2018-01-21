@@ -1,24 +1,24 @@
 var italian = [
 	{
-		front: "boy",
+		front: "the boy",
 		back: "il ragazzo"
 	}, {
-		front: "girl",
+		front: "the girl",
 		back: "la ragazza"
 	}, {
-		front: "man",
+		front: "the man",
 		back: "l'uomo"
 	},{
-		front: "woman",
+		front: "the woman",
 		back: "la donna"
 	}, {
-		front: "family",
+		front: "the family",
 		back: "la famiglia"
 	}, {
-		front: "house",
+		front: "the house",
 		back: "la casa"
 	}, {
-		front: "food",
+		front: "the food",
 		back: "il cibo"
 	}, {
 		front: "hello",
