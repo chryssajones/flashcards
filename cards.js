@@ -1,104 +1,120 @@
+// load dependencies
 var inquirer = require("inquirer");
-var spanish = require('./spanishCards.js');
-var french = require('./frenchCards.js');
-var italian = require('./italianCards.js');
-var hawaiian = require('./hawaiianCards.js');
-// var deckChoice = require('./cli.js');
+
+// load card decks
+var spanish = require('./spanishCards');
+var french = require('./frenchCards');
+var italian = require('./italianCards');
+var hawaiian = require('./hawaiianCards');
+
+var deckList = ["French", "Hawaiian", "Italian", "Spanish"];
+
+// initialize the round
+var deck = "";
+var round = 1;
 var correct = 0;
 var incorrect = 0;
-var i = 1;
 
-// console.log("I couldn't get the CLI to work so I'm running the app from this file instead.");
-console.log("Welcome to the flashcard practice app.");
-
-var deckList = ["French", "Italian", "Hawaiian", "Spanish"];
-var deckChoice = "";
-
+// this function starts the game
 var start = function() {
-	if (deckChoice == "") {
-		inquirer.prompt([
-	      {
-	        name: "choice",
-	        type: "list",
-	        choices: deckList,
-	        message: "Which deck would you like to practice?"
-	      }
-	    ]).then(function(answer) {
-	    	console.log("You are using the " + answer.choice + " deck. Good luck!")
-	    	var string = answer.choice;
-	    	deckChoice = string.toLowerCase();
-			start();
-			});
-	} else {
-		console.log(deckChoice);
-		getCard(deckChoice);
-	}
+	console.log("Welcome to the flashcard practice app.");
+	console.log("===========================================");
+	chooseDeck();
+};
 
- };
+// this function lets the user select the card deck for this round
+var chooseDeck = function() {
+	inquirer.prompt([
+		{
+			name: "choice",
+			type: "list",
+			choices: deckList,
+			message: "Which deck would you like to practice?"
+		}
+		]).then(function(answer) {
+	    	console.log("You are using the " + answer.choice + " deck. Good luck!");
+	    	console.log("================================================");
+
+			// this switch sets the deck
+			switch (answer.choice) {
+				case "French":
+					deck = french;
+					break;
+				case "Hawaiian":
+					deck = hawaiian;
+					break;
+				case "Italian":
+					deck = italian;
+					break;	     		;
+				case "Spanish":
+					deck = spanish;
+			}
+
+		// call the card constructor function for the selected deck
+		getCard(deck);
+
+	});
+};
+
 
 // this is the card constructor
 var getCard = function(deck) {
-	// console.log("The getCard function was called");
-	var c = Math.floor((Math.random() * deck.length));
-	console.log("Ready? Here's card #" + i + " on the " + deck + " deck:");
-	buildCard(deck, c);
-	// flipSide();
-	// console.log("side1 = " + side1 ", side2 = " + side2);
-	query(this.front, this.back);
-	i++;
-};
+	console.log("Ready? Here's card #" + round);
 
+	var front = deck[round].front;
+	var back = deck[round].back;
 
-var buildCard = function(deck, i) {
-	console.log("The buildCard function was called on card #" + i + " of the " + deck + " deck.");
-	this.front = deck[i].front;
-	console.log(this.front);
-	this.back = deck[i].back;
-	console.log(this.back);
-	return (this.front, this.back);
-};
-
-
-var userGuess = "";
-var query = function(side1, side2){
-	console.log(side1 + " | " + side2);
-	// console.log("The query function was called");
 	inquirer.prompt([
-      {
-        name: "input",
-        type: "text",
-        message: "What is the translation of " + side1
-      }
-    ]).then(function(answer) {
-    	userGuess = answer.input;
-    	if (userGuess == side2) {
- 			correct ++;   		
-			console.log("That is correct! Total correct:" + correct);
-			if (correct < 10) {
-				getCard(deckChoice);
-			} else if (correct >= 10) {
-				console.log("Great job! Be sure to keep practing! Total correct: " + correct);
-				start();
-			}
+    	{
+	        name: "input",
+	        type: "text",
+	        message: "What is the translation of " + front + "?"
+    	}
+	]).then(function(answer) {
 
-		} else {
-			incorrect ++;			
-			console.log("Sorry, that is incorrect. The correct answer is " + side2 + ". You have " + incorrect + " incorrect answers.");
-			if (incorrect < 3) {
-				getCard(deckChoice);
-			} else if (incorrect >= 3) {
-				console.log("Perhaps you should study a bit more and try again later.");
+    	var userGuess = answer.input;
+		console.log("You typed: " + userGuess);
+
+	    	if (userGuess === back) {
+				correct ++;
+	    		console.log("That is correct! Great job!");
+	    		console.log("Your new score is >>> Correct: " + correct + ", Incorrect: " + incorrect);
+	    		console.log("=============================================");
+
+				if (correct < 10) {
+					round ++;
+					getCard(deck);
+				} else if (correct >= 10) {
+					console.log("Great job! Be sure to keep practing!");
+					return;
+				}
+
+			} else {
+				incorrect ++;				
+				console.log("Sorry, that is incorrect. The correct answer is " + back);
+				console.log("Your new score is >>> Correct: " + correct + ", Incorrect: " + incorrect);
+	    		console.log("=============================================");
+
+				if (incorrect < 3) {
+					round ++;
+					getCard(deck);
+				} else if (incorrect >= 3) {
+					console.log("Perhaps you should study a bit more and try again later.");
+					return;
+				}
+
 			}
-		}
-    });
+	});
 };
 
 
-// var side1 = "";
-// var side2 = "";
+
+
 // var flipSide = function() {
+// 	var side1 = "";
+// 	var side2 = "";
 // 	var r = Math.floor((Math.random() * 2));
-// 	// console.log("The flipSide function was called and the random number is " + r);
+// 	console.log("The flipSide function was called and the random number is " + r);
 // 		if (r == 0) {
 // 			side1 = "front";
 // 			side2 = "back";
@@ -109,12 +125,5 @@ var query = function(side1, side2){
 // 		return side1, side2;
 // };
 
-
-// getCard(deckChoice);
-
-// module.exports = buildCard;
-// module.exports = getCard;
-// module.exports = correct;
-// module.exports = incorrect;
-
 start();
+
