@@ -20,3 +20,5 @@
     "inquirer": "^3.3.0"
   }
 }
+
+//this file has only one NPM module
