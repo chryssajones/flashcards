@@ -59,23 +59,33 @@ var chooseDeck = function() {
 
 // this is the card constructor
 var getCard = function(deck) {
-	console.log("Ready? Here's card #" + round);
 
-	var front = deck[round].front;
-	var back = deck[round].back;
+	// this flips the side of the card
+	var side1;
+	var side2;
+	var r = Math.floor((Math.random() * 2));
+		if (r == 0) {
+			side1 = deck[round].front;
+			side2 = deck[round].back
+		} else {
+			side1 = deck[round].back
+			side2 = deck[round].front;
+		}
+
+	console.log("Ready? Here's card #" + round);
 
 	inquirer.prompt([
     	{
 	        name: "input",
 	        type: "text",
-	        message: "What is the translation of " + front + "?"
+	        message: "What is the translation of " + side1 + "?"
     	}
 	]).then(function(answer) {
 
     	var userGuess = answer.input;
 		console.log("You typed: " + userGuess);
 
-	    	if (userGuess === back) {
+	    	if (userGuess === side2) {
 				correct ++;
 	    		console.log("That is correct! Great job!");
 	    		console.log("Your new score is >>> Correct: " + correct + ", Incorrect: " + incorrect);
@@ -91,7 +101,7 @@ var getCard = function(deck) {
 
 			} else {
 				incorrect ++;				
-				console.log("Sorry, that is incorrect. The correct answer is " + back);
+				console.log("Sorry, that is incorrect. The correct answer is " + side2);
 				console.log("Your new score is >>> Correct: " + correct + ", Incorrect: " + incorrect);
 	    		console.log("=============================================");
 
@@ -107,23 +117,6 @@ var getCard = function(deck) {
 	});
 };
 
-
-
-
-// var flipSide = function() {
-// 	var side1 = "";
-// 	var side2 = "";
-// 	var r = Math.floor((Math.random() * 2));
-// 	console.log("The flipSide function was called and the random number is " + r);
-// 		if (r == 0) {
-// 			side1 = "front";
-// 			side2 = "back";
-// 		} else {
-// 			side1 = "back";
-// 			side2 = "front";
-// 		}
-// 		return side1, side2;
-// };
 
 start();
 
